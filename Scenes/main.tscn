@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://pefd3qamwxv4" path="res://Scripts/Ui/currency_container.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://b6lk5ac5lnx0e" path="res://Scripts/Spawners/comet_spawner.gd" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://buxv4pjyef1b3" path="res://Scripts/save_loader.gd" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://7ikrjomrfdjf" path="res://Assets/HuGGeENt6kGyixe3hT9tnY.jpg" id="5_kry3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2exj0"]
@@ -46,6 +47,9 @@ cometTargetArea = NodePath("../../GameArea/CometTargetAreaContainer/CometTargetA
 
 [node name="CometSpawnTimer" type="Timer" parent="MainGameController/CometSpawner" unique_id=1647153805]
 one_shot = true
+
+[node name="SaveLoader" type="Node" parent="MainGameController" unique_id=1922561503]
+script = ExtResource("4_21xkr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1782789782]
 

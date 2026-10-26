@@ -8,7 +8,6 @@
 gradient = SubResource("Gradient_865kf")
 
 [node name="Comet" type="Node2D" unique_id=1946951399]
-position = Vector2(-1, 2)
 script = ExtResource("1_rjp11")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965517872]
