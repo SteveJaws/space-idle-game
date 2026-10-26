@@ -21,7 +21,7 @@ scale = Vector2(0.5984375, 0.5391666)
 texture = ExtResource("5_kry3j")
 
 [node name="CometSpawnAreaContainer" type="Area2D" parent="GameArea" unique_id=1742808469]
-position = Vector2(0, -345)
+position = Vector2(0, -344)
 
 [node name="CometSpawnArea" type="CollisionShape2D" parent="GameArea/CometSpawnAreaContainer" unique_id=61310049]
 position = Vector2(-1, 0)
