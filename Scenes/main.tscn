@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c5xgb5vexkbx5"]
+
+[ext_resource type="Script" uid="uid://ddpoe2tnfdk0s" path="res://Scripts/Controllers/main_game_controller.gd" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://pefd3qamwxv4" path="res://Scripts/Ui/currency_container.gd" id="2_bo1nx"]
+
+[node name="Main" type="Node2D" unique_id=1920608726]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1782789782]
+
+[node name="MainGameController" type="Node" parent="." unique_id=1240563683]
+script = ExtResource("1_jjgbg")
+
+[node name="CurrencyTimer" type="Timer" parent="MainGameController" unique_id=1020226963]
+autostart = true
+
+[node name="InGameUiController" type="Control" parent="." unique_id=290881692 node_paths=PackedStringArray("currencyContainer")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -575.0
+offset_top = -323.0
+offset_right = 574.0
+offset_bottom = 324.0
+script = ExtResource("2_8gbba")
+currencyContainer = NodePath("Main/MainColumn/TopRow/PanelContainer/CurrencyContainer")
+
+[node name="Main" type="MarginContainer" parent="InGameUiController" unique_id=2027407201]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainColumn" type="VBoxContainer" parent="InGameUiController/Main" unique_id=929713002]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="InGameUiController/Main/MainColumn" unique_id=176118662]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InGameUiController/Main/MainColumn/TopRow" unique_id=1650284071]
+layout_mode = 2
+
+[node name="CurrencyContainer" type="HBoxContainer" parent="InGameUiController/Main/MainColumn/TopRow/PanelContainer" unique_id=1809452451]
+layout_mode = 2
+script = ExtResource("2_bo1nx")
+
+[node name="Label" type="Label" parent="InGameUiController/Main/MainColumn/TopRow/PanelContainer/CurrencyContainer" unique_id=1431512921]
+layout_mode = 2
+text = "Stardust:"
+
+[node name="Value" type="Label" parent="InGameUiController/Main/MainColumn/TopRow/PanelContainer/CurrencyContainer" unique_id=860417867]
+layout_mode = 2
+text = "0"
+
+[connection signal="timeout" from="MainGameController/CurrencyTimer" to="MainGameController" method="_on_timer_timeout"]
