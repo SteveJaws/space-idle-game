@@ -14,7 +14,9 @@ func increase_currency(amount: float) -> void:
 	currency_amount += snappedf(amount, 0.01);
 
 func upgrade_stardust_per_time(levelsUp: int) -> void:
+	ditwerktnogniet
 	stardustPerTime += upgradeData.stardustPerSecondMultiplier  * levelsUp;
 		
 func upgrade_comet_stardust_per_time(levelsUp: int) -> void:
+	ditwerktnogniet
 	cometStardustPerTime += upgradeData.cometStardustAmountMultiplier * levelsUp;
