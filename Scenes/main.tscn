@@ -3,16 +3,51 @@
 [ext_resource type="Script" uid="uid://ddpoe2tnfdk0s" path="res://Scripts/Controllers/main_game_controller.gd" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://pefd3qamwxv4" path="res://Scripts/Ui/currency_container.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://b6lk5ac5lnx0e" path="res://Scripts/Spawners/comet_spawner.gd" id="2_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://7ikrjomrfdjf" path="res://Assets/HuGGeENt6kGyixe3hT9tnY.jpg" id="5_kry3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2exj0"]
+size = Vector2(1149, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=1920608726]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1782789782]
+[node name="GameArea" type="Node2D" parent="." unique_id=598674274]
+
+[node name="Sprite2D" type="Sprite2D" parent="GameArea" unique_id=139797685]
+position = Vector2(-0.5, 0.5)
+scale = Vector2(0.5984375, 0.5391666)
+texture = ExtResource("5_kry3j")
+
+[node name="CometSpawnAreaContainer" type="Area2D" parent="GameArea" unique_id=1742808469]
+position = Vector2(0, -245)
+
+[node name="CometSpawnArea" type="CollisionShape2D" parent="GameArea/CometSpawnAreaContainer" unique_id=61310049]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_2exj0")
+
+[node name="CometTargetAreaContainer" type="Area2D" parent="GameArea" unique_id=413169908]
+
+[node name="CometTargetArea" type="CollisionShape2D" parent="GameArea/CometTargetAreaContainer" unique_id=86790243]
+scale = Vector2(12.87, 12.87)
+shape = SubResource("CircleShape2D_kry3j")
 
 [node name="MainGameController" type="Node" parent="." unique_id=1240563683]
 script = ExtResource("1_jjgbg")
 
 [node name="CurrencyTimer" type="Timer" parent="MainGameController" unique_id=1020226963]
 autostart = true
+
+[node name="CometSpawner" type="Node" parent="MainGameController" unique_id=1762842700 node_paths=PackedStringArray("cometSpawnArea", "cometTargetArea")]
+script = ExtResource("2_jjvhh")
+cometSpawnArea = NodePath("../../GameArea/CometSpawnAreaContainer/CometSpawnArea")
+cometTargetArea = NodePath("../../GameArea/CometTargetAreaContainer/CometTargetArea")
+
+[node name="CometSpawnTimer" type="Timer" parent="MainGameController/CometSpawner" unique_id=1647153805]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1782789782]
 
 [node name="InGameUiController" type="Control" parent="." unique_id=290881692 node_paths=PackedStringArray("currencyContainer")]
 layout_mode = 3
@@ -58,3 +93,4 @@ layout_mode = 2
 text = "0"
 
 [connection signal="timeout" from="MainGameController/CurrencyTimer" to="MainGameController" method="_on_timer_timeout"]
+[connection signal="timeout" from="MainGameController/CometSpawner/CometSpawnTimer" to="MainGameController/CometSpawner" method="_on_comet_spawn_timer_timeout"]

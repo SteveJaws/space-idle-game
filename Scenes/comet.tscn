@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cxyunsc05t0ly"]
+
+[ext_resource type="Script" uid="uid://fmhlj1ctlhrk" path="res://Scripts/Objects/comet.gd" id="1_rjp11"]
+
+[sub_resource type="Gradient" id="Gradient_865kf"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_865kf"]
+gradient = SubResource("Gradient_865kf")
+
+[node name="Comet" type="Node2D" unique_id=1946951399]
+script = ExtResource("1_rjp11")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965517872]
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(0.12840949, 30.249996)
+texture = SubResource("GradientTexture1D_865kf")
