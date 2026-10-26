@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7ikrjomrfdjf" path="res://Assets/HuGGeENt6kGyixe3hT9tnY.jpg" id="5_kry3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2exj0"]
-size = Vector2(1149, 20)
+size = Vector2(1532, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kry3j"]
 
@@ -21,10 +21,10 @@ scale = Vector2(0.5984375, 0.5391666)
 texture = ExtResource("5_kry3j")
 
 [node name="CometSpawnAreaContainer" type="Area2D" parent="GameArea" unique_id=1742808469]
-position = Vector2(0, -245)
+position = Vector2(0, -345)
 
 [node name="CometSpawnArea" type="CollisionShape2D" parent="GameArea/CometSpawnAreaContainer" unique_id=61310049]
-position = Vector2(-1.5, 0)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_2exj0")
 
 [node name="CometTargetAreaContainer" type="Area2D" parent="GameArea" unique_id=413169908]

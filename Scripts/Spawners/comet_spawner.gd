@@ -5,7 +5,7 @@ extends Node
 @export var cometTargetArea: CollisionShape2D;
 
 func get_rand_f() -> float:
-	return randf_range(0, 2);
+	return randf_range(0, 100);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,8 +26,8 @@ func spawn_comet(comet: Node2D) -> void:
 	var cometSpawnAreaWidth: float = self.cometSpawnArea.shape.get_rect().size.x;
 	var cometSpawnAreaHeight: float = self.cometSpawnArea.shape.get_rect().size.y;
 	
-	var spawnX = randf_range(cometSpawnAreaX, cometSpawnAreaX + cometSpawnAreaWidth);
-	var spawnY = randf_range(cometSpawnAreaY, cometSpawnAreaY + cometSpawnAreaHeight);
+	var spawnX = randf_range(cometSpawnAreaX - (cometSpawnAreaWidth / 2), cometSpawnAreaX + (cometSpawnAreaWidth / 2));
+	var spawnY = randf_range(cometSpawnAreaY - (cometSpawnAreaHeight / 2), cometSpawnAreaY + (cometSpawnAreaHeight / 2));
 	
 	var cometSpawnPos: Vector2 = Vector2(spawnX, spawnY)
 	
@@ -42,7 +42,7 @@ func spawn_comet(comet: Node2D) -> void:
 	var cometTargetPos: Vector2 = Vector2(targetX, targetY);
 	
 	comet.global_position = cometSpawnPos;
-	comet.targetPos = cometTargetPos;
+	comet.targetDirection = (cometTargetPos - comet.global_position).normalized();
 	
 	get_tree().get_root().add_child(comet);
 	
