@@ -4,25 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://0eminmepv2k5" path="res://Scenes/planet.tscn" id="2_6bp64"]
 [ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://pefd3qamwxv4" path="res://Scripts/Ui/currency_container.gd" id="2_bo1nx"]
-[ext_resource type="Script" uid="uid://b6lk5ac5lnx0e" path="res://Scripts/Spawners/comet_spawner.gd" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cow11bk8mtfwx" path="res://Scenes/alien.tscn" id="3_344ge"]
 [ext_resource type="Script" uid="uid://buxv4pjyef1b3" path="res://Scripts/save_loader.gd" id="4_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dceiotegpyx8e" path="res://Scenes/comet_area_container.tscn" id="4_344ge"]
 [ext_resource type="Texture2D" uid="uid://7ikrjomrfdjf" path="res://Assets/HuGGeENt6kGyixe3hT9tnY.jpg" id="5_kry3j"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kry3j"]
-radius = 24.515451
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2exj0"]
-size = Vector2(1532, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_elmaw"]
-size = Vector2(20, 703)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8s34"]
-size = Vector2(1526, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
-size = Vector2(20, 702.5)
 
 [node name="Main" type="Node2D" unique_id=1920608726]
 
@@ -33,42 +18,6 @@ position = Vector2(-0.5, 0.5)
 scale = Vector2(0.5984375, 0.5391666)
 texture = ExtResource("5_kry3j")
 
-[node name="CometAreaContainer" type="Node2D" parent="GameArea" unique_id=348561170]
-visible = false
-
-[node name="CometTargetAreaContainer" type="Area2D" parent="GameArea/CometAreaContainer" unique_id=413169908]
-
-[node name="CometTargetArea" type="CollisionShape2D" parent="GameArea/CometAreaContainer/CometTargetAreaContainer" unique_id=86790243]
-scale = Vector2(12.87, 12.87)
-shape = SubResource("CircleShape2D_kry3j")
-
-[node name="CometSpawnAreaTopContainer" type="Area2D" parent="GameArea/CometAreaContainer" unique_id=1742808469]
-position = Vector2(0, -344)
-
-[node name="CometSpawnAreaTop" type="CollisionShape2D" parent="GameArea/CometAreaContainer/CometSpawnAreaTopContainer" unique_id=61310049]
-shape = SubResource("RectangleShape2D_2exj0")
-
-[node name="CometSpawnAreaRightContainer" type="Area2D" parent="GameArea/CometAreaContainer" unique_id=381651579]
-position = Vector2(634, 0)
-
-[node name="CometSpawnAreaRight" type="CollisionShape2D" parent="GameArea/CometAreaContainer/CometSpawnAreaRightContainer" unique_id=572927598]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_elmaw")
-
-[node name="CometSpawnAreaBottomContainer" type="Area2D" parent="GameArea/CometAreaContainer" unique_id=1461683055]
-position = Vector2(0, 338)
-
-[node name="CometSpawnAreaBottom" type="CollisionShape2D" parent="GameArea/CometAreaContainer/CometSpawnAreaBottomContainer" unique_id=587147981]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_l8s34")
-
-[node name="CometSpawnAreaLeftContainer" type="Area2D" parent="GameArea/CometAreaContainer" unique_id=17142858]
-position = Vector2(-628, 0)
-
-[node name="CometSpawnAreaLeft" type="CollisionShape2D" parent="GameArea/CometAreaContainer/CometSpawnAreaLeftContainer" unique_id=420955502]
-position = Vector2(1, 0.75)
-shape = SubResource("RectangleShape2D_21xkr")
-
 [node name="Planet" parent="GameArea" unique_id=278831561 instance=ExtResource("2_6bp64")]
 scale = Vector2(2.035, 2.035)
 
@@ -76,22 +25,13 @@ scale = Vector2(2.035, 2.035)
 position = Vector2(-519, -161)
 scale = Vector2(0.57, 0.57)
 
+[node name="CometAreaContainer" parent="GameArea" unique_id=703142546 instance=ExtResource("4_344ge")]
+
 [node name="MainGameController" type="Node" parent="." unique_id=1240563683]
 script = ExtResource("1_jjgbg")
 
 [node name="CurrencyTimer" type="Timer" parent="MainGameController" unique_id=1020226963]
 autostart = true
-
-[node name="CometSpawner" type="Node" parent="MainGameController" unique_id=1762842700 node_paths=PackedStringArray("cometTargetArea", "cometSpawnAreaTop", "cometSpawnAreaRight", "cometSpawnAreaBottom", "cometSpawnAreaLeft")]
-script = ExtResource("2_jjvhh")
-cometTargetArea = NodePath("../../GameArea/CometAreaContainer/CometTargetAreaContainer/CometTargetArea")
-cometSpawnAreaTop = NodePath("../../GameArea/CometAreaContainer/CometSpawnAreaTopContainer/CometSpawnAreaTop")
-cometSpawnAreaRight = NodePath("../../GameArea/CometAreaContainer/CometSpawnAreaRightContainer/CometSpawnAreaRight")
-cometSpawnAreaBottom = NodePath("../../GameArea/CometAreaContainer/CometSpawnAreaBottomContainer/CometSpawnAreaBottom")
-cometSpawnAreaLeft = NodePath("../../GameArea/CometAreaContainer/CometSpawnAreaLeftContainer/CometSpawnAreaLeft")
-
-[node name="CometSpawnTimer" type="Timer" parent="MainGameController/CometSpawner" unique_id=1647153805]
-one_shot = true
 
 [node name="SaveLoader" type="Node" parent="MainGameController" unique_id=1922561503]
 script = ExtResource("4_21xkr")
@@ -142,4 +82,3 @@ layout_mode = 2
 text = "0"
 
 [connection signal="timeout" from="MainGameController/CurrencyTimer" to="MainGameController" method="_on_timer_timeout"]
-[connection signal="timeout" from="MainGameController/CometSpawner/CometSpawnTimer" to="MainGameController/CometSpawner" method="_on_comet_spawn_timer_timeout"]

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dceiotegpyx8e"]
+
+[ext_resource type="Script" uid="uid://b6lk5ac5lnx0e" path="res://Scripts/Spawners/comet_spawner.gd" id="1_0j438"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kry3j"]
+radius = 24.515451
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2exj0"]
+size = Vector2(1532, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elmaw"]
+size = Vector2(20, 703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8s34"]
+size = Vector2(1526, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
+size = Vector2(20, 702.5)
+
+[node name="CometAreaContainer" type="Node2D" unique_id=703142546]
+visible = false
+
+[node name="CometTargetAreaContainer" type="Area2D" parent="." unique_id=1987982391]
+
+[node name="CometTargetArea" type="CollisionShape2D" parent="CometTargetAreaContainer" unique_id=1444445601]
+scale = Vector2(12.87, 12.87)
+shape = SubResource("CircleShape2D_kry3j")
+
+[node name="CometSpawnAreaTopContainer" type="Area2D" parent="." unique_id=136551846]
+position = Vector2(0, -344)
+
+[node name="CometSpawnAreaTop" type="CollisionShape2D" parent="CometSpawnAreaTopContainer" unique_id=326675303]
+shape = SubResource("RectangleShape2D_2exj0")
+
+[node name="CometSpawnAreaRightContainer" type="Area2D" parent="." unique_id=198734856]
+position = Vector2(634, 0)
+
+[node name="CometSpawnAreaRight" type="CollisionShape2D" parent="CometSpawnAreaRightContainer" unique_id=1650534727]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_elmaw")
+
+[node name="CometSpawnAreaBottomContainer" type="Area2D" parent="." unique_id=1182441534]
+position = Vector2(0, 338)
+
+[node name="CometSpawnAreaBottom" type="CollisionShape2D" parent="CometSpawnAreaBottomContainer" unique_id=1220853323]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_l8s34")
+
+[node name="CometSpawnAreaLeftContainer" type="Area2D" parent="." unique_id=864119803]
+position = Vector2(-628, 0)
+
+[node name="CometSpawnAreaLeft" type="CollisionShape2D" parent="CometSpawnAreaLeftContainer" unique_id=240335992]
+position = Vector2(1, 0.75)
+shape = SubResource("RectangleShape2D_21xkr")
+
+[node name="CometSpawner" type="Node" parent="." unique_id=1926246324 node_paths=PackedStringArray("cometTargetArea", "cometSpawnAreaTop", "cometSpawnAreaRight", "cometSpawnAreaBottom", "cometSpawnAreaLeft")]
+script = ExtResource("1_0j438")
+cometTargetArea = NodePath("../CometTargetAreaContainer/CometTargetArea")
+cometSpawnAreaTop = NodePath("../CometSpawnAreaTopContainer/CometSpawnAreaTop")
+cometSpawnAreaRight = NodePath("../CometSpawnAreaRightContainer/CometSpawnAreaRight")
+cometSpawnAreaBottom = NodePath("../CometSpawnAreaBottomContainer/CometSpawnAreaBottom")
+cometSpawnAreaLeft = NodePath("../CometSpawnAreaLeftContainer/CometSpawnAreaLeft")
+
+[node name="CometSpawnTimer" type="Timer" parent="CometSpawner" unique_id=1042183645]
+one_shot = true
+
+[connection signal="timeout" from="CometSpawner/CometSpawnTimer" to="CometSpawner" method="_on_comet_spawn_timer_timeout"]

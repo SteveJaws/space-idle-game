@@ -9,11 +9,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var file = FileAccess.open("res://Assets/SaveData/save.json", FileAccess.READ);
-	if(file == null): return;
-	var json_text = file.get_as_text();
-	if(json_text.length() < 1): return;
-	saveLoader.load(json_text);
+	saveLoader.load();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

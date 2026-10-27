@@ -1,8 +1,9 @@
 extends Node
 
+@onready var cometContainer: Node2D = $"..";
 @onready var timer: Timer = $CometSpawnTimer;
-@export var cometTargetArea: CollisionShape2D;
 
+@export var cometTargetArea: CollisionShape2D;
 @export var cometSpawnAreaTop: CollisionShape2D;
 @export var cometSpawnAreaRight: CollisionShape2D;
 @export var cometSpawnAreaBottom: CollisionShape2D;
@@ -15,6 +16,7 @@ func get_rand_f() -> float:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.cometContainer.visible = true;
 	self.set_timer(self.get_rand_f());
 
 func set_timer(delay: float) -> void:
@@ -50,6 +52,6 @@ func spawn_comet(comet: Node2D, cometSpawnArea: CollisionShape2D) -> void:
 	comet.global_position = cometSpawnPos;
 	comet.targetDirection = (cometTargetPos - comet.global_position).normalized();
 	
-	get_tree().get_root().add_child(comet);
+	self.cometContainer.add_child(comet);
 	
 	set_timer(self.get_rand_f());
