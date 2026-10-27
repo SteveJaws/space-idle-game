@@ -1,10 +1,10 @@
 {
     "levels": {
         "stardust": {
-            "level": 2
+            "level": 1
         },
         "comet": {
-            "level": 2
+            "level": 1
         }
     }
 }

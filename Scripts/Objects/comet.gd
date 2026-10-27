@@ -25,15 +25,12 @@ func _on_life_time_timeout() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
 		if(check_if_click_is_inside_comet(get_global_mouse_position())):
-			playerData.increase_currency(10);
+			playerData.increase_currency(self.playerData.cometStardustPerTime);
 			self.inGameUiController.update_currency_value(playerData.currency_amount);
 			self.queue_free();
 
 func check_if_click_is_inside_comet(click_position: Vector2) -> bool:
-	# 1. Convert the global click position to the sprite's local coordinates
 	var local_pos = sprite.to_local(click_position)
 	
-	# 2. Check if the local position falls inside the sprite's rectangle bounds
 	return sprite.get_rect().has_point(local_pos)

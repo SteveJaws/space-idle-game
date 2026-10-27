@@ -1,11 +1,17 @@
 extends Node
 
 @onready var timer: Timer = $CometSpawnTimer;
-@export var cometSpawnArea: CollisionShape2D;
 @export var cometTargetArea: CollisionShape2D;
 
+@export var cometSpawnAreaTop: CollisionShape2D;
+@export var cometSpawnAreaRight: CollisionShape2D;
+@export var cometSpawnAreaBottom: CollisionShape2D;
+@export var cometSpawnAreaLeft: CollisionShape2D;
+
+@onready var cometSpawnAreaList: Array[CollisionShape2D] = [self.cometSpawnAreaTop, self.cometSpawnAreaRight, self.cometSpawnAreaBottom, self.cometSpawnAreaLeft];
+
 func get_rand_f() -> float:
-	return randf_range(0, 100);
+	return randf_range(0, 2);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,13 +24,13 @@ func set_timer(delay: float) -> void:
 func _on_comet_spawn_timer_timeout() -> void:
 	var scene = preload("res://Scenes/comet.tscn").instantiate();
 	
-	self.spawn_comet(scene);
+	self.spawn_comet(scene, self.cometSpawnAreaList.get(randi_range(0, self.cometSpawnAreaList.size() - 1)));
 
-func spawn_comet(comet: Node2D) -> void:
-	var cometSpawnAreaX: float = self.cometSpawnArea.global_position.x;
-	var cometSpawnAreaY: float = self.cometSpawnArea.global_position.y;
-	var cometSpawnAreaWidth: float = self.cometSpawnArea.shape.get_rect().size.x;
-	var cometSpawnAreaHeight: float = self.cometSpawnArea.shape.get_rect().size.y;
+func spawn_comet(comet: Node2D, cometSpawnArea: CollisionShape2D) -> void:
+	var cometSpawnAreaX: float = cometSpawnArea.global_position.x;
+	var cometSpawnAreaY: float = cometSpawnArea.global_position.y;
+	var cometSpawnAreaWidth: float = cometSpawnArea.shape.get_rect().size.x;
+	var cometSpawnAreaHeight: float = cometSpawnArea.shape.get_rect().size.y;
 	
 	var spawnX = randf_range(cometSpawnAreaX - (cometSpawnAreaWidth / 2), cometSpawnAreaX + (cometSpawnAreaWidth / 2));
 	var spawnY = randf_range(cometSpawnAreaY - (cometSpawnAreaHeight / 2), cometSpawnAreaY + (cometSpawnAreaHeight / 2));

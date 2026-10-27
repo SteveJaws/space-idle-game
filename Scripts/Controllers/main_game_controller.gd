@@ -23,7 +23,5 @@ func _on_timer_timeout() -> void:
 	self.automatic_currency()
 
 func automatic_currency() -> void:
-	var automatic_addup_value = playerData.stardustPerTime;
-	
-	playerData.increase_currency(automatic_addup_value);
-	inGameUiController.update_currency_value(playerData.currency_amount);
+	self.playerData.increase_currency(playerData.stardustPerTime);
+	self.inGameUiController.update_currency_value(playerData.currency_amount);
