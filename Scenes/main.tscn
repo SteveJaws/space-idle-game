@@ -73,7 +73,7 @@ shape = SubResource("RectangleShape2D_21xkr")
 scale = Vector2(2.035, 2.035)
 
 [node name="Alien" parent="GameArea" unique_id=1097530145 instance=ExtResource("3_344ge")]
-position = Vector2(-252, -56)
+position = Vector2(-519, -161)
 scale = Vector2(0.57, 0.57)
 
 [node name="MainGameController" type="Node" parent="." unique_id=1240563683]

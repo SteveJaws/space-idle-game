@@ -14,8 +14,13 @@ collision_layer = 2
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("1_mdm8w")
 
-[node name="AlienGravityHandler" type="Node" parent="." unique_id=1258961459]
+[node name="AlienMovementHandler" type="Node" parent="." unique_id=1258961459]
 script = ExtResource("2_fhrgm")
+minTimeTillNewJump = 5.0
+maxTimeTillNewJump = 10.0
+minTimeTillNewMovement = 2.0
+maxTimeTillNewMovement = 5.0
+maxTimeMovementLength = 6.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=174799453]
 collision_layer = 2
@@ -29,7 +34,16 @@ scale = Vector2(4.59, 4.59)
 shape = SubResource("RectangleShape2D_b3h60")
 
 [node name="DelayTillNextJump" type="Timer" parent="." unique_id=284953131]
+one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="AlienGravityHandler" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="AlienGravityHandler" method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="DelayTillNextJump" to="AlienGravityHandler" method="_on_delay_till_next_jump_timeout"]
+[node name="DelayTillNextMove" type="Timer" parent="." unique_id=1826347189]
+one_shot = true
+
+[node name="MoveTime" type="Timer" parent="." unique_id=47878858]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="AlienMovementHandler" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="AlienMovementHandler" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="DelayTillNextJump" to="AlienMovementHandler" method="_on_delay_till_next_jump_timeout"]
+[connection signal="timeout" from="DelayTillNextMove" to="AlienMovementHandler" method="_on_delay_till_next_move_timeout"]
+[connection signal="timeout" from="MoveTime" to="AlienMovementHandler" method="_on_move_time_timeout"]
