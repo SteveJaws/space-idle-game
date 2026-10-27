@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://butpal44ca1bs"]
+[gd_scene format=3 uid="uid://0eminmepv2k5"]
 
 [ext_resource type="Texture2D" uid="uid://cw0ngaj4q71v" path="res://Assets/Round-removebg-preview.png" id="1_xehyc"]
 
@@ -9,6 +9,7 @@
 [node name="Planet" type="Node2D" unique_id=278831561]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=212687223]
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1492178808]
 material = SubResource("ShaderMaterial_xehyc")

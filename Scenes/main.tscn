@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c5xgb5vexkbx5"]
 
 [ext_resource type="Script" uid="uid://ddpoe2tnfdk0s" path="res://Scripts/Controllers/main_game_controller.gd" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://butpal44ca1bs" path="res://Scenes/planet.tscn" id="2_6bp64"]
+[ext_resource type="PackedScene" uid="uid://0eminmepv2k5" path="res://Scenes/planet.tscn" id="2_6bp64"]
 [ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://pefd3qamwxv4" path="res://Scripts/Ui/currency_container.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://b6lk5ac5lnx0e" path="res://Scripts/Spawners/comet_spawner.gd" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://bsmfyuu5nptcp" path="res://Scenes/alien.tscn" id="3_344ge"]
+[ext_resource type="PackedScene" uid="uid://cow11bk8mtfwx" path="res://Scenes/alien.tscn" id="3_344ge"]
 [ext_resource type="Script" uid="uid://buxv4pjyef1b3" path="res://Scripts/save_loader.gd" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://7ikrjomrfdjf" path="res://Assets/HuGGeENt6kGyixe3hT9tnY.jpg" id="5_kry3j"]
 
@@ -73,7 +73,7 @@ shape = SubResource("RectangleShape2D_21xkr")
 scale = Vector2(2.035, 2.035)
 
 [node name="Alien" parent="GameArea" unique_id=1097530145 instance=ExtResource("3_344ge")]
-position = Vector2(304, 212)
+position = Vector2(-252, -56)
 scale = Vector2(0.57, 0.57)
 
 [node name="MainGameController" type="Node" parent="." unique_id=1240563683]

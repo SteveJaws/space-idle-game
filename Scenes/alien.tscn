@@ -1,21 +1,35 @@
-[gd_scene format=3 uid="uid://bsmfyuu5nptcp"]
+[gd_scene format=3 uid="uid://cow11bk8mtfwx"]
 
 [ext_resource type="Texture2D" uid="uid://ci0hxbroikopw" path="res://Assets/alien.jpg" id="1_mdm8w"]
 [ext_resource type="Script" uid="uid://ukb8l1sp1mx1" path="res://Scripts/Objects/Alien/alien_gravity_handler.gd" id="2_fhrgm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhrgm"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3h60"]
 
 [node name="Alien" type="CharacterBody2D" unique_id=1097530145]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1277469600]
-position = Vector2(-0.26249886, -1.2624989)
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("1_mdm8w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335980595]
-position = Vector2(-0.26249886, -1.2624989)
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_b3h60")
-
 [node name="AlienGravityHandler" type="Node" parent="." unique_id=1258961459]
 script = ExtResource("2_fhrgm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=174799453]
+collision_layer = 2
+
+[node name="AlienHitBox" type="CollisionShape2D" parent="Area2D" unique_id=1228581339]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_fhrgm")
+
+[node name="AlienCollisionBox" type="CollisionShape2D" parent="." unique_id=1335980595]
+scale = Vector2(4.59, 4.59)
+shape = SubResource("RectangleShape2D_b3h60")
+
+[node name="DelayTillNextJump" type="Timer" parent="." unique_id=284953131]
+
+[connection signal="body_entered" from="Area2D" to="AlienGravityHandler" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="AlienGravityHandler" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="DelayTillNextJump" to="AlienGravityHandler" method="_on_delay_till_next_jump_timeout"]
