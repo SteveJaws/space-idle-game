@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bsmfyuu5nptcp"]
+
+[ext_resource type="Texture2D" uid="uid://ci0hxbroikopw" path="res://Assets/alien.jpg" id="1_mdm8w"]
+[ext_resource type="Script" uid="uid://ukb8l1sp1mx1" path="res://Scripts/Objects/Alien/alien_gravity_handler.gd" id="2_fhrgm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3h60"]
+
+[node name="Alien" type="CharacterBody2D" unique_id=1097530145]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1277469600]
+position = Vector2(-0.26249886, -1.2624989)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_mdm8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335980595]
+position = Vector2(-0.26249886, -1.2624989)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_b3h60")
+
+[node name="AlienGravityHandler" type="Node" parent="." unique_id=1258961459]
+script = ExtResource("2_fhrgm")

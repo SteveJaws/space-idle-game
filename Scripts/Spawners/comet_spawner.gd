@@ -11,7 +11,7 @@ extends Node
 @onready var cometSpawnAreaList: Array[CollisionShape2D] = [self.cometSpawnAreaTop, self.cometSpawnAreaRight, self.cometSpawnAreaBottom, self.cometSpawnAreaLeft];
 
 func get_rand_f() -> float:
-	return randf_range(0, 2);
+	return randf_range(0, 100);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://butpal44ca1bs"]
+
+[ext_resource type="Texture2D" uid="uid://cw0ngaj4q71v" path="res://Assets/Round-removebg-preview.png" id="1_xehyc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xehyc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg0dd"]
+
+[node name="Planet" type="Node2D" unique_id=278831561]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=212687223]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1492178808]
+material = SubResource("ShaderMaterial_xehyc")
+position = Vector2(0, 2.505)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("1_xehyc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1786572004]
+scale = Vector2(7.485, 7.485)
+shape = SubResource("CircleShape2D_kg0dd")
+
+[node name="PlanetCore" type="Marker2D" parent="StaticBody2D" unique_id=399827862]
