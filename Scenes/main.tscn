@@ -4,92 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://0eminmepv2k5" path="res://Scenes/planet.tscn" id="2_6bp64"]
 [ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://pefd3qamwxv4" path="res://Scripts/Ui/currency_container.gd" id="2_bo1nx"]
-[ext_resource type="Texture2D" uid="uid://cdxw732oomhm3" path="res://Assets/Sprites/Background/background.png" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cow11bk8mtfwx" path="res://Scenes/alien.tscn" id="3_344ge"]
 [ext_resource type="Script" uid="uid://buxv4pjyef1b3" path="res://Scripts/save_loader.gd" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dceiotegpyx8e" path="res://Scenes/comet_area_container.tscn" id="4_344ge"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_344ge"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(0, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynf5e"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(1920, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hptm8"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(3840, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1ilt"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(5760, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6iyac"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(7680, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fdnlq"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(9600, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(11520, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wsu2k"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(13440, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k12tt"]
-atlas = ExtResource("2_ynf5e")
-region = Rect2(15360, 0, 1920, 1080)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ynf5e"]
-animations = [{
-"frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_344ge")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_ynf5e")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_hptm8")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_d1ilt")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_6iyac")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_fdnlq")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_jkdf5")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_wsu2k")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_k12tt")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Main" type="Node2D" unique_id=1920608726]
 
 [node name="GameArea" type="Node2D" parent="." unique_id=598674274]
-
-[node name="Background" type="AnimatedSprite2D" parent="GameArea" unique_id=503929167]
-position = Vector2(-0.5, 0.5)
-scale = Vector2(0.5984375, 0.59907407)
-sprite_frames = SubResource("SpriteFrames_ynf5e")
-autoplay = "default"
-frame_progress = 0.46087697
 
 [node name="Planet" parent="GameArea" unique_id=278831561 instance=ExtResource("2_6bp64")]
 scale = Vector2(3.325, 3.325)
