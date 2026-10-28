@@ -1,8 +1,114 @@
 [gd_scene format=3 uid="uid://cow11bk8mtfwx"]
 
-[ext_resource type="Texture2D" uid="uid://ci0hxbroikopw" path="res://Assets/alien.jpg" id="1_mdm8w"]
+[ext_resource type="Script" uid="uid://7c086iocq2nu" path="res://Scripts/Objects/Alien/alien.gd" id="1_4f320"]
+[ext_resource type="Texture2D" uid="uid://nlxw5a5qhndp" path="res://Assets/Sprites/spaceIdleGame/Aliens/StandardAlien/Idle/AlienIdle.png" id="1_26noy"]
+[ext_resource type="Texture2D" uid="uid://dvjofu52mmdh8" path="res://Assets/Sprites/spaceIdleGame/Aliens/StandardAlien/Walk/AlienWalk.png" id="2_7sw17"]
 [ext_resource type="Script" uid="uid://ukb8l1sp1mx1" path="res://Scripts/Objects/Alien/alien_gravity_handler.gd" id="2_fhrgm"]
 [ext_resource type="Script" uid="uid://edyrygjkmt6y" path="res://Scripts/Objects/Alien/alien_rotation_handler.gd" id="3_26noy"]
+[ext_resource type="Texture2D" uid="uid://cw4f51ecf7nsl" path="res://Assets/Sprites/spaceIdleGame/Aliens/StandardAlien/MineSparkle/MineAnim.png" id="4_s84hg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sw17"]
+atlas = ExtResource("1_26noy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f320"]
+atlas = ExtResource("1_26noy")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjurw"]
+atlas = ExtResource("2_7sw17")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s84hg"]
+atlas = ExtResource("2_7sw17")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhb2l"]
+atlas = ExtResource("2_7sw17")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k27ix"]
+atlas = ExtResource("2_7sw17")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb26l"]
+atlas = ExtResource("2_7sw17")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fhrgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sw17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f320")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjurw")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s84hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhb2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k27ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb26l")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56v5a"]
+atlas = ExtResource("4_s84hg")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5brx0"]
+atlas = ExtResource("4_s84hg")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nhk8"]
+atlas = ExtResource("4_s84hg")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2jv8"]
+atlas = ExtResource("4_s84hg")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4f320"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56v5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5brx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nhk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2jv8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhrgm"]
 
@@ -10,10 +116,21 @@
 
 [node name="Alien" type="CharacterBody2D" unique_id=1097530145]
 collision_layer = 2
+script = ExtResource("1_4f320")
+alienColor = Color(0.2786317, 0.98409003, 0.31423292, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1277469600]
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("1_mdm8w")
+[node name="AlienAnimation" type="AnimatedSprite2D" parent="." unique_id=2002974328]
+scale = Vector2(11.445, 11.445)
+sprite_frames = SubResource("SpriteFrames_fhrgm")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.3916309
+
+[node name="AlienMineAnimation" type="AnimatedSprite2D" parent="." unique_id=400341999]
+position = Vector2(0, 14.999999)
+scale = Vector2(11.535, 11.535)
+sprite_frames = SubResource("SpriteFrames_4f320")
+frame_progress = 0.24493837
 
 [node name="AlienMovementHandler" type="Node" parent="." unique_id=1258961459]
 script = ExtResource("2_fhrgm")
@@ -24,6 +141,7 @@ maxTimeTillNewMovement = 5.0
 maxTimeMovementLength = 6.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=174799453]
+visible = false
 collision_layer = 2
 
 [node name="AlienHitBox" type="CollisionShape2D" parent="Area2D" unique_id=1228581339]
@@ -31,6 +149,7 @@ scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_fhrgm")
 
 [node name="AlienCollisionBox" type="CollisionShape2D" parent="." unique_id=1335980595]
+visible = false
 scale = Vector2(4.59, 4.59)
 shape = SubResource("RectangleShape2D_b3h60")
 

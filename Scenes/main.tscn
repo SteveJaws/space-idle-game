@@ -89,7 +89,7 @@ position = Vector2(-0.5, 0.5)
 scale = Vector2(0.5984375, 0.59907407)
 sprite_frames = SubResource("SpriteFrames_ynf5e")
 autoplay = "default"
-frame_progress = 0.9269605
+frame_progress = 0.46087697
 
 [node name="Planet" parent="GameArea" unique_id=278831561 instance=ExtResource("2_6bp64")]
 scale = Vector2(2.035, 2.035)

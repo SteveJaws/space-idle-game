@@ -4,6 +4,8 @@ extends Node
 @onready var jumpTimer: Timer = $"../DelayTillNextJump";
 @onready var delayMoveTimer: Timer = $"../DelayTillNextMove";
 @onready var moveTimeTimer: Timer = $"../MoveTime";
+@onready var animationNode: AnimatedSprite2D = $"../AlienAnimation";
+@onready var alienMineAnimationNode: AnimatedSprite2D = $"../AlienMineAnimation";
 
 var planetCore: Marker2D = null;
 
@@ -30,6 +32,7 @@ func _ready() -> void:
 	
 	self.delayMoveTimer.wait_time = randf_range(self.minTimeTillNewMovement, self.maxTimeTillNewMovement);
 	self.delayMoveTimer.start();
+	self.alienMineAnimationNode.animation = "default";
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,6 +51,7 @@ func _process(delta: float) -> void:
 	self.alienBody.velocity = gravityVelocity + moveVelocity;
 	
 	self.alienBody.move_and_slide();
+	self.animation_handling();
 
 func find_planet_core() -> void:
 	var possbilePlanetCore = get_tree().root.find_child("PlanetCore", true, false);
@@ -98,3 +102,19 @@ func _on_move_time_timeout() -> void:
 	self.canMove = false;
 	self.delayMoveTimer.wait_time = randf_range(self.minTimeTillNewMovement, self.maxTimeTillNewMovement);
 	self.delayMoveTimer.start();
+
+func animation_handling() -> void:
+	if(!self.onPlanet): 
+		self.animationNode.animation = "Jump";
+		self.alienMineAnimationNode.pause();
+		self.alienMineAnimationNode.frame = 0;
+	elif(self.canMove): 
+		self.animationNode.animation = "Walk"
+		self.alienMineAnimationNode.pause();
+		self.alienMineAnimationNode.frame = 0;
+	else: 
+		self.animationNode.animation = "Idle";
+		self.alienMineAnimationNode.play();
+	
+	if(moveDirection == -1): self.animationNode.flip_h = false;
+	else: self.animationNode.flip_h = true;
