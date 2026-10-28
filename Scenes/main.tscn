@@ -92,7 +92,7 @@ autoplay = "default"
 frame_progress = 0.46087697
 
 [node name="Planet" parent="GameArea" unique_id=278831561 instance=ExtResource("2_6bp64")]
-scale = Vector2(2.035, 2.035)
+scale = Vector2(3.325, 3.325)
 
 [node name="Alien" parent="GameArea" unique_id=1097530145 instance=ExtResource("3_344ge")]
 position = Vector2(-519, -161)
@@ -102,9 +102,6 @@ scale = Vector2(0.57, 0.57)
 
 [node name="MainGameController" type="Node" parent="." unique_id=1240563683]
 script = ExtResource("1_jjgbg")
-
-[node name="CurrencyTimer" type="Timer" parent="MainGameController" unique_id=1020226963]
-autostart = true
 
 [node name="SaveLoader" type="Node" parent="MainGameController" unique_id=1922561503]
 script = ExtResource("4_21xkr")
@@ -153,5 +150,3 @@ text = "Stardust:"
 [node name="Value" type="Label" parent="InGameUiController/Main/MainColumn/TopRow/PanelContainer/CurrencyContainer" unique_id=860417867]
 layout_mode = 2
 text = "0"
-
-[connection signal="timeout" from="MainGameController/CurrencyTimer" to="MainGameController" method="_on_timer_timeout"]

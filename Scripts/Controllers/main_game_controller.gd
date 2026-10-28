@@ -1,7 +1,5 @@
 extends Node
 
-@onready var timer: Timer = $CurrencyTimer;
-
 @onready var playerData: PlayerData = ClassAutoload.playerData;
 
 @onready var inGameUiController: Control = $"../InGameUiController";
@@ -14,10 +12,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _on_timer_timeout() -> void:
-	self.automatic_currency()
-
-func automatic_currency() -> void:
-	self.playerData.increase_currency(playerData.stardustPerTime);
-	self.inGameUiController.update_currency_value(playerData.currency_amount);

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://0eminmepv2k5"]
 
+[ext_resource type="Script" uid="uid://c374ny51iuigj" path="res://Scripts/Objects/Planet/planet.gd" id="1_vpe2g"]
 [ext_resource type="Texture2D" uid="uid://cw0ngaj4q71v" path="res://Assets/Round-removebg-preview.png" id="1_xehyc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xehyc"]
@@ -7,6 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kg0dd"]
 
 [node name="Planet" type="Node2D" unique_id=278831561]
+script = ExtResource("1_vpe2g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=212687223]
 collision_mask = 2

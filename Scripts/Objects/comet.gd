@@ -24,9 +24,9 @@ func _on_life_time_timeout() -> void:
 	self.queue_free();
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event.is_action_pressed("click"):
 		if(check_if_click_is_inside_comet(get_global_mouse_position())):
-			playerData.increase_currency(self.playerData.cometStardustPerTime);
+			playerData.increase_currency(self.playerData.cometStardustPerClick);
 			self.inGameUiController.update_currency_value(playerData.currency_amount);
 			self.queue_free();
 
