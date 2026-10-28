@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ci0hxbroikopw" path="res://Assets/alien.jpg" id="1_mdm8w"]
 [ext_resource type="Script" uid="uid://ukb8l1sp1mx1" path="res://Scripts/Objects/Alien/alien_gravity_handler.gd" id="2_fhrgm"]
+[ext_resource type="Script" uid="uid://edyrygjkmt6y" path="res://Scripts/Objects/Alien/alien_rotation_handler.gd" id="3_26noy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhrgm"]
 
@@ -41,6 +42,9 @@ one_shot = true
 
 [node name="MoveTime" type="Timer" parent="." unique_id=47878858]
 one_shot = true
+
+[node name="AlienRotationHandler" type="Node" parent="." unique_id=519878717]
+script = ExtResource("3_26noy")
 
 [connection signal="body_entered" from="Area2D" to="AlienMovementHandler" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="AlienMovementHandler" method="_on_area_2d_body_exited"]
