@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c5xgb5vexkbx5"]
 
+[ext_resource type="Texture2D" uid="uid://dngb0s0bue0qq" path="res://Assets/Sprites/spaceIdleGame/Backgrounds/background2_sritesheet.png" id="1_344ge"]
 [ext_resource type="Script" uid="uid://ddpoe2tnfdk0s" path="res://Scripts/Controllers/main_game_controller.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://0eminmepv2k5" path="res://Scenes/planet.tscn" id="2_6bp64"]
 [ext_resource type="Script" uid="uid://cc7awuslbhnav" path="res://Scripts/Ui/in_game_ui_controller.gd" id="2_8gbba"]
@@ -8,7 +9,56 @@
 [ext_resource type="Script" uid="uid://buxv4pjyef1b3" path="res://Scripts/save_loader.gd" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dceiotegpyx8e" path="res://Scenes/comet_area_container.tscn" id="4_344ge"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynf5e"]
+atlas = ExtResource("1_344ge")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hptm8"]
+atlas = ExtResource("1_344ge")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1ilt"]
+atlas = ExtResource("1_344ge")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iyac"]
+atlas = ExtResource("1_344ge")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdnlq"]
+atlas = ExtResource("1_344ge")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtjvb"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ynf5e")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_hptm8")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_d1ilt")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_6iyac")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_fdnlq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D" unique_id=1920608726]
+
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=340186012]
+scale = Vector2(9.14, 9.14)
+sprite_frames = SubResource("SpriteFrames_jtjvb")
+autoplay = "default"
+frame_progress = 0.5268941
 
 [node name="GameArea" type="Node2D" parent="." unique_id=598674274]
 
