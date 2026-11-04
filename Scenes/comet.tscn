@@ -3,21 +3,28 @@
 [ext_resource type="Script" uid="uid://fmhlj1ctlhrk" path="res://Scripts/Objects/comet.gd" id="1_rjp11"]
 [ext_resource type="Texture2D" uid="uid://tstp2h1eyean" path="res://Assets/Sprites/spaceIdleGame/objects/comet/comet.png" id="2_3y164"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ug50b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y164"]
 atlas = ExtResource("2_3y164")
 region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_85twn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug50b"]
 atlas = ExtResource("2_3y164")
 region = Rect2(8, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpefh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_85twn"]
 atlas = ExtResource("2_3y164")
 region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpefh"]
+atlas = ExtResource("2_3y164")
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rjp11"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y164")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ug50b")
 }, {
@@ -32,6 +39,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8s34"]
+size = Vector2(33, 39)
+
 [node name="Comet" type="Node2D" unique_id=1946951399]
 script = ExtResource("1_rjp11")
 
@@ -44,6 +54,14 @@ autostart = true
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_rjp11")
 autoplay = "default"
-frame_progress = 0.23246689
+frame_progress = 0.59615374
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1880110626]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=322312690]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_l8s34")
 
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

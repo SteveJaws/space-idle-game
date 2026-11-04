@@ -51,6 +51,7 @@ func spawn_comet(comet: Node2D, cometSpawnArea: CollisionShape2D) -> void:
 	
 	comet.global_position = cometSpawnPos;
 	comet.targetDirection = (cometTargetPos - comet.global_position).normalized();
+	comet.targetLocation = cometTargetPos;
 	
 	self.cometContainer.add_child(comet);
 	

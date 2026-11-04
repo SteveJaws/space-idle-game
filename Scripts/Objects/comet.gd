@@ -1,7 +1,9 @@
 extends Node2D
 
 var targetDirection: Vector2;
+var targetLocation: Vector2;
 var cometSpeed: float;
+var mouseEntered: bool = false;
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D;
 
@@ -26,19 +28,18 @@ func _on_life_time_timeout() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
-		if(check_if_click_is_inside_comet(get_global_mouse_position())):
+		if(self.mouseEntered):
 			playerData.increase_currency(self.playerData.cometStardustPerClick);
 			self.inGameUiController.update_currency_value(playerData.currency_amount);
 			self.queue_free();
 
-func check_if_click_is_inside_comet(click_position: Vector2) -> bool:
-	var local_pos = sprite.to_local(click_position)
-	
-	return sprite.get_rect().has_point(local_pos)
-
 func draw_sprite_correctly() -> void:
-	pass
-	if(self.targetDirection.x < self.sprite.global_position.x):
-		self.sprite.flip_h = true;
-	if(self.targetDirection.y < self.sprite.global_position.y):
-		self.sprite.flip_v = true;
+	self.sprite.look_at(self.targetLocation)
+	self.sprite.rotate((PI / 2) * -1)
+
+
+func _on_area_2d_mouse_entered() -> void:
+	self.mouseEntered = true;
+
+func _on_area_2d_mouse_exited() -> void:
+	self.mouseEntered = false;

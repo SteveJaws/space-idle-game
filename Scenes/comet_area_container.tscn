@@ -17,43 +17,47 @@ size = Vector2(1526, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
 size = Vector2(20, 702.5)
 
-[node name="CometAreaContainer" type="Node2D" unique_id=703142546]
-visible = false
+[node name="CometAreaContainer" type="Node2D" unique_id=1790553427]
 
-[node name="CometTargetAreaContainer" type="Area2D" parent="." unique_id=1987982391]
+[node name="CometTargetAreaContainer" type="Area2D" parent="." unique_id=1173690778]
+scale = Vector2(0.47917336, 0.47917336)
 
-[node name="CometTargetArea" type="CollisionShape2D" parent="CometTargetAreaContainer" unique_id=1444445601]
+[node name="CometTargetArea" type="CollisionShape2D" parent="CometTargetAreaContainer" unique_id=1758223125]
 scale = Vector2(12.87, 12.87)
 shape = SubResource("CircleShape2D_kry3j")
 
-[node name="CometSpawnAreaTopContainer" type="Area2D" parent="." unique_id=136551846]
-position = Vector2(0, -344)
+[node name="CometSpawnAreaTopContainer" type="Area2D" parent="." unique_id=1987312381]
+position = Vector2(0, -213)
+scale = Vector2(-0.66670394, -0.66670394)
 
-[node name="CometSpawnAreaTop" type="CollisionShape2D" parent="CometSpawnAreaTopContainer" unique_id=326675303]
+[node name="CometSpawnAreaTop" type="CollisionShape2D" parent="CometSpawnAreaTopContainer" unique_id=831073465]
 shape = SubResource("RectangleShape2D_2exj0")
 
-[node name="CometSpawnAreaRightContainer" type="Area2D" parent="." unique_id=198734856]
-position = Vector2(634, 0)
+[node name="CometSpawnAreaRightContainer" type="Area2D" parent="." unique_id=1741348724]
+position = Vector2(353, 0)
+scale = Vector2(0.80000734, 0.80000734)
 
-[node name="CometSpawnAreaRight" type="CollisionShape2D" parent="CometSpawnAreaRightContainer" unique_id=1650534727]
+[node name="CometSpawnAreaRight" type="CollisionShape2D" parent="CometSpawnAreaRightContainer" unique_id=204797086]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_elmaw")
 
-[node name="CometSpawnAreaBottomContainer" type="Area2D" parent="." unique_id=1182441534]
-position = Vector2(0, 338)
+[node name="CometSpawnAreaBottomContainer" type="Area2D" parent="." unique_id=354726104]
+position = Vector2(0, 210)
+scale = Vector2(0.6985702, 0.6985702)
 
-[node name="CometSpawnAreaBottom" type="CollisionShape2D" parent="CometSpawnAreaBottomContainer" unique_id=1220853323]
+[node name="CometSpawnAreaBottom" type="CollisionShape2D" parent="CometSpawnAreaBottomContainer" unique_id=1226451273]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_l8s34")
 
-[node name="CometSpawnAreaLeftContainer" type="Area2D" parent="." unique_id=864119803]
-position = Vector2(-628, 0)
+[node name="CometSpawnAreaLeftContainer" type="Area2D" parent="." unique_id=922176859]
+position = Vector2(-352, 0)
+scale = Vector2(0.76529527, 0.76529527)
 
-[node name="CometSpawnAreaLeft" type="CollisionShape2D" parent="CometSpawnAreaLeftContainer" unique_id=240335992]
+[node name="CometSpawnAreaLeft" type="CollisionShape2D" parent="CometSpawnAreaLeftContainer" unique_id=16195944]
 position = Vector2(1, 0.75)
 shape = SubResource("RectangleShape2D_21xkr")
 
-[node name="CometSpawner" type="Node" parent="." unique_id=1926246324 node_paths=PackedStringArray("cometTargetArea", "cometSpawnAreaTop", "cometSpawnAreaRight", "cometSpawnAreaBottom", "cometSpawnAreaLeft")]
+[node name="CometSpawner" type="Node" parent="." unique_id=940775396 node_paths=PackedStringArray("cometTargetArea", "cometSpawnAreaTop", "cometSpawnAreaRight", "cometSpawnAreaBottom", "cometSpawnAreaLeft")]
 script = ExtResource("1_0j438")
 cometTargetArea = NodePath("../CometTargetAreaContainer/CometTargetArea")
 cometSpawnAreaTop = NodePath("../CometSpawnAreaTopContainer/CometSpawnAreaTop")
@@ -61,7 +65,7 @@ cometSpawnAreaRight = NodePath("../CometSpawnAreaRightContainer/CometSpawnAreaRi
 cometSpawnAreaBottom = NodePath("../CometSpawnAreaBottomContainer/CometSpawnAreaBottom")
 cometSpawnAreaLeft = NodePath("../CometSpawnAreaLeftContainer/CometSpawnAreaLeft")
 
-[node name="CometSpawnTimer" type="Timer" parent="CometSpawner" unique_id=1042183645]
+[node name="CometSpawnTimer" type="Timer" parent="CometSpawner" unique_id=504963024]
 one_shot = true
 
 [connection signal="timeout" from="CometSpawner/CometSpawnTimer" to="CometSpawner" method="_on_comet_spawn_timer_timeout"]

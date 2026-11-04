@@ -60,13 +60,6 @@ sprite_frames = SubResource("SpriteFrames_jtjvb")
 autoplay = "default"
 frame_progress = 0.5268941
 
-[node name="GameArea" type="Node2D" parent="." unique_id=598674274]
-
-[node name="Planet" parent="GameArea" unique_id=278831561 instance=ExtResource("2_6bp64")]
-scale = Vector2(1.67, 1.67)
-
-[node name="CometAreaContainer" parent="GameArea" unique_id=703142546 instance=ExtResource("4_344ge")]
-
 [node name="MainGameController" type="Node" parent="." unique_id=1240563683]
 script = ExtResource("1_jjgbg")
 
@@ -82,6 +75,7 @@ offset_left = -320.21
 offset_top = -159.965
 offset_right = 319.79
 offset_bottom = 160.035
+mouse_filter = 2
 script = ExtResource("2_8gbba")
 currencyContainer = NodePath("Main/MainColumn/TopRow/PanelContainer/CurrencyContainer")
 
@@ -119,3 +113,10 @@ layout_mode = 2
 text = "0"
 
 [node name="Alien" parent="." unique_id=1097530145 instance=ExtResource("3_344ge")]
+
+[node name="GameArea" type="Node2D" parent="." unique_id=598674274]
+
+[node name="Planet" parent="GameArea" unique_id=278831561 instance=ExtResource("2_6bp64")]
+scale = Vector2(1.67, 1.67)
+
+[node name="CometAreaContainer" parent="GameArea" unique_id=1790553427 instance=ExtResource("4_344ge")]
