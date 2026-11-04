@@ -120,17 +120,17 @@ script = ExtResource("1_4f320")
 alienColor = Color(0.2786317, 0.98409003, 0.31423292, 1)
 
 [node name="AlienAnimation" type="AnimatedSprite2D" parent="." unique_id=2002974328]
-scale = Vector2(11.445, 11.445)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_fhrgm")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.3916309
 
 [node name="AlienMineAnimation" type="AnimatedSprite2D" parent="." unique_id=400341999]
-position = Vector2(0, 14.999999)
-scale = Vector2(11.535, 11.535)
+position = Vector2(0, 10)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4f320")
-frame_progress = 0.24493837
+frame_progress = 0.6953213
 
 [node name="AlienMovementHandler" type="Node" parent="." unique_id=1258961459]
 script = ExtResource("2_fhrgm")
@@ -141,16 +141,13 @@ maxTimeTillNewMovement = 5.0
 maxTimeMovementLength = 6.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=174799453]
-visible = false
 collision_layer = 2
 
 [node name="AlienHitBox" type="CollisionShape2D" parent="Area2D" unique_id=1228581339]
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fhrgm")
 
 [node name="AlienCollisionBox" type="CollisionShape2D" parent="." unique_id=1335980595]
-visible = false
-scale = Vector2(4.59, 4.59)
 shape = SubResource("RectangleShape2D_b3h60")
 
 [node name="DelayTillNextJump" type="Timer" parent="." unique_id=284953131]

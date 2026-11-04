@@ -1,23 +1,49 @@
 [gd_scene format=3 uid="uid://cxyunsc05t0ly"]
 
 [ext_resource type="Script" uid="uid://fmhlj1ctlhrk" path="res://Scripts/Objects/comet.gd" id="1_rjp11"]
+[ext_resource type="Texture2D" uid="uid://tstp2h1eyean" path="res://Assets/Sprites/spaceIdleGame/objects/comet/comet.png" id="2_3y164"]
 
-[sub_resource type="Gradient" id="Gradient_865kf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug50b"]
+atlas = ExtResource("2_3y164")
+region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_865kf"]
-gradient = SubResource("Gradient_865kf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_85twn"]
+atlas = ExtResource("2_3y164")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpefh"]
+atlas = ExtResource("2_3y164")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjp11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug50b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85twn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpefh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Comet" type="Node2D" unique_id=1946951399]
 script = ExtResource("1_rjp11")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965517872]
-position = Vector2(0, -1.9073486e-06)
-scale = Vector2(0.12840949, 30.249996)
-texture = SubResource("GradientTexture1D_865kf")
 
 [node name="LifeTime" type="Timer" parent="." unique_id=1737854454]
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1583807942]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_rjp11")
+autoplay = "default"
+frame_progress = 0.23246689
 
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

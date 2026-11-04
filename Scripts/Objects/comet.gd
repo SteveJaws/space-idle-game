@@ -3,7 +3,7 @@ extends Node2D
 var targetDirection: Vector2;
 var cometSpeed: float;
 
-@onready var sprite: Sprite2D = $Sprite2D;
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D;
 
 @onready var playerData: PlayerData = ClassAutoload.playerData;
 @onready var inGameUiController: Control = null;
@@ -15,6 +15,7 @@ var cometSpeed: float;
 func _ready() -> void:
 	self.cometSpeed = randf_range(minCometSpeed, maxCometSpeed);
 	self.inGameUiController = get_tree().root.find_child("InGameUiController", true, false);
+	self.draw_sprite_correctly();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,3 +35,10 @@ func check_if_click_is_inside_comet(click_position: Vector2) -> bool:
 	var local_pos = sprite.to_local(click_position)
 	
 	return sprite.get_rect().has_point(local_pos)
+
+func draw_sprite_correctly() -> void:
+	pass
+	if(self.targetDirection.x < self.sprite.global_position.x):
+		self.sprite.flip_h = true;
+	if(self.targetDirection.y < self.sprite.global_position.y):
+		self.sprite.flip_v = true;
