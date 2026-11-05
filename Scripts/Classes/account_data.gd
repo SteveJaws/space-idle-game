@@ -1,6 +1,6 @@
 class_name AccountData extends RefCounted
 
-var currency_amount: float = 1000;
+var currency_amount: float = 99999999999999;
 
 var stardustPerClickLevel: int = 1;
 var cometStardustPerClickLevel: int = 1;
@@ -26,8 +26,8 @@ func upgrade_stardust_per_time(ignorePriceOfUpgrade: bool = false) -> bool:
 	self.currency_amount = self.currency_amount - self.stardustUpgradePrice;
 	self.stardustPerClick *= upgradeData.stardustPerClickMultiplier;
 	self.stardustPerClickLevel += 1;
-	self.stardustUpgradePrice *= upgradeData.stardustCostPriceMultiplier;
-	self.upgradeData.stardustCostPriceMultiplier *= 1.5;
+	self.stardustUpgradePrice *= (upgradeData.stardustCostPriceMultiplier * upgradeData.stardustCostPriceMultiplier);
+	#self.upgradeData.stardustCostPriceMultiplier *= 1.5;
 	return true;
 		
 func upgrade_comet_stardust_per_time(ignorePriceOfUpgrade: bool = false) -> bool:
@@ -36,5 +36,5 @@ func upgrade_comet_stardust_per_time(ignorePriceOfUpgrade: bool = false) -> bool
 	self.cometStardustPerClick += upgradeData.cometStardustAmountMultiplier;
 	self.cometStardustPerClickLevel += 1;
 	self.cometStardustUpgradePrice *= self.upgradeData.cometStardustPriceMultiplier;
-	self.upgradeData.cometStardustPriceMultiplier *= 1.5;
+	#self.upgradeData.cometStardustPriceMultiplier *= 1.5;
 	return true;
