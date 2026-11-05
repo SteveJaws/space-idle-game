@@ -3,41 +3,37 @@
 [ext_resource type="Script" uid="uid://fmhlj1ctlhrk" path="res://Scripts/Objects/comet.gd" id="1_rjp11"]
 [ext_resource type="Texture2D" uid="uid://tstp2h1eyean" path="res://Assets/Sprites/spaceIdleGame/objects/comet/comet.png" id="2_3y164"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3y164"]
-atlas = ExtResource("2_3y164")
-region = Rect2(0, 0, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ug50b"]
 atlas = ExtResource("2_3y164")
 region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85twn"]
-atlas = ExtResource("2_3y164")
-region = Rect2(16, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpefh"]
-atlas = ExtResource("2_3y164")
-region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rjp11"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3y164")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ug50b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85twn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cpefh")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 15.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_3y164"]
+colors = PackedColorArray(1, 0.5137255, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpefh"]
+gradient = SubResource("Gradient_3y164")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hyb4s"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(6.3, 1, 1)
+direction = Vector3(0, -10, 0)
+spread = 70.0
+initial_velocity_max = 29.57
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_cpefh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8s34"]
 size = Vector2(33, 39)
@@ -53,8 +49,14 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1583807942]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_rjp11")
-autoplay = "default"
 frame_progress = 0.59615374
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D" unique_id=1255383917]
+position = Vector2(0, -2)
+scale = Vector2(0.25, 0.25)
+amount = 200
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_hyb4s")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1880110626]
 
