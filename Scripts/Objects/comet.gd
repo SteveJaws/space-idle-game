@@ -7,7 +7,7 @@ var mouseEntered: bool = false;
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D;
 
-@onready var playerData: PlayerData = ClassAutoload.playerData;
+@onready var accountData: AccountData = ClassAutoload.accountData;
 @onready var inGameUiController: Control = null;
 
 @export var minCometSpeed: float = 100;
@@ -29,8 +29,8 @@ func _on_life_time_timeout() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		if(self.mouseEntered):
-			playerData.increase_currency(self.playerData.cometStardustPerClick);
-			self.inGameUiController.update_currency_value(playerData.currency_amount);
+			accountData.increase_currency(self.accountData.cometStardustPerClick);
+			self.inGameUiController.update_currency_value(accountData.currency_amount);
 			self.queue_free();
 
 func draw_sprite_correctly() -> void:

@@ -1,4 +1,4 @@
-class_name PlayerData extends RefCounted
+class_name AccountData extends RefCounted
 
 var currency_amount: float = 0;
 

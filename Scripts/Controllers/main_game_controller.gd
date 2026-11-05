@@ -1,6 +1,6 @@
 extends Node
 
-@onready var playerData: PlayerData = ClassAutoload.playerData;
+@onready var accountData: AccountData = ClassAutoload.accountData;
 
 @onready var inGameUiController: Control = $"../InGameUiController";
 @onready var saveLoader: Node = $SaveLoader;

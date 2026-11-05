@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var sprite: Sprite2D = $StaticBody2D/Sprite2D;
-@onready var playerData: PlayerData = ClassAutoload.playerData;
+@onready var accountData: AccountData = ClassAutoload.accountData;
 
 var inGameUiController;
 
@@ -25,8 +25,8 @@ func _input(event: InputEvent) -> void:
 		var localPost: Vector2 = self.sprite.to_local(mousePos);
 		
 		if(self.sprite.get_rect().has_point(localPost)):
-			playerData.increase_currency(playerData.stardustPerClick)
-			self.inGameUiController.update_currency_value(playerData.currency_amount);
+			accountData.increase_currency(accountData.stardustPerClick)
+			self.inGameUiController.update_currency_value(accountData.currency_amount);
 			if(self.canScale): self.scale_self();
 
 func scale_self() -> void:

@@ -22,5 +22,5 @@ func load():
 	var starDustLevel = levels["stardust"]["level"];
 	var cometStarDustLevel = levels["comet"]["level"]
 	
-	for i in range(starDustLevel): ClassAutoload.playerData.upgrade_stardust_per_time();
-	for i in range(cometStarDustLevel): ClassAutoload.playerData.upgrade_comet_stardust_per_time();
+	for i in range(starDustLevel): ClassAutoload.accountData.upgrade_stardust_per_time();
+	for i in range(cometStarDustLevel): ClassAutoload.accountData.upgrade_comet_stardust_per_time();

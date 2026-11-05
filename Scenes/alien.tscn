@@ -134,6 +134,7 @@ frame_progress = 0.6953213
 
 [node name="AlienMovementHandler" type="Node" parent="." unique_id=1258961459]
 script = ExtResource("2_fhrgm")
+jumpHeigth = 30
 minTimeTillNewJump = 5.0
 maxTimeTillNewJump = 10.0
 minTimeTillNewMovement = 2.0

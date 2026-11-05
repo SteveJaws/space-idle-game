@@ -1,3 +1,3 @@
 extends Node
 
-@onready var playerData: PlayerData = PlayerData.new();
+@onready var accountData: AccountData = AccountData.new();
