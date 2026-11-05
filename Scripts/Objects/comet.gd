@@ -30,7 +30,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		if(self.mouseEntered):
 			accountData.increase_currency(self.accountData.cometStardustPerClick);
-			self.inGameUiController.update_currency_value(accountData.currency_amount);
 			self.queue_free();
 
 func draw_sprite_correctly() -> void:

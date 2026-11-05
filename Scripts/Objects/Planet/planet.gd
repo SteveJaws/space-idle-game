@@ -26,7 +26,6 @@ func _input(event: InputEvent) -> void:
 		
 		if(self.sprite.get_rect().has_point(localPost)):
 			accountData.increase_currency(accountData.stardustPerClick)
-			self.inGameUiController.update_currency_value(accountData.currency_amount);
 			if(self.canScale): self.scale_self();
 
 func scale_self() -> void:

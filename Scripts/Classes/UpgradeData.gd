@@ -1,4 +1,7 @@
 class_name UpgradeData extends Resource
 
-@export var stardustPerClickMultiplier: float = 2;
-@export var cometStardustAmountMultiplier: float = 1.15;
+var stardustPerClickMultiplier: float = 2;
+var cometStardustAmountMultiplier: float = 3;
+
+var stardustCostPriceMultiplier: float = 1.5;
+var cometStardustPriceMultiplier: float = 2.5;

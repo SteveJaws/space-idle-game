@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cow11bk8mtfwx" path="res://Scenes/alien.tscn" id="3_344ge"]
 [ext_resource type="Script" uid="uid://buxv4pjyef1b3" path="res://Scripts/save_loader.gd" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dceiotegpyx8e" path="res://Scenes/comet_area_container.tscn" id="4_344ge"]
+[ext_resource type="Script" uid="uid://bgstgiaj5t8mq" path="res://Scripts/Controllers/shop_controller.gd" id="9_ynf5e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynf5e"]
 atlas = ExtResource("1_344ge")
@@ -121,3 +122,34 @@ text = "Stardust:"
 [node name="Value" type="Label" parent="InGameUiController/Main/MainColumn/TopRow/PanelContainer/CurrencyContainer" unique_id=860417867]
 layout_mode = 2
 text = "0"
+
+[node name="MiddleRow" type="HBoxContainer" parent="InGameUiController/Main/MainColumn" unique_id=2064545020]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGameUiController/Main/MainColumn/MiddleRow" unique_id=1657959413]
+layout_mode = 2
+
+[node name="StardustUpgradePrice" type="Label" parent="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer" unique_id=1824631862]
+layout_mode = 2
+
+[node name="UpgradeStardustButton" type="Button" parent="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer" unique_id=432023624]
+layout_mode = 2
+text = "Upgrade stardust"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="InGameUiController/Main/MainColumn/MiddleRow" unique_id=1155092466]
+layout_mode = 2
+
+[node name="CometStardustUpgradePrice" type="Label" parent="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer2" unique_id=1733648695]
+layout_mode = 2
+
+[node name="UpgradeCometStardustButton" type="Button" parent="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer2" unique_id=276592979]
+layout_mode = 2
+text = "Upgrade cometStardust"
+
+[node name="ShopController" type="Node" parent="InGameUiController" unique_id=1117544564]
+script = ExtResource("9_ynf5e")
+
+[connection signal="pressed" from="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer/UpgradeStardustButton" to="InGameUiController/ShopController" method="_on_upgrade_stardust_button_pressed"]
+[connection signal="pressed" from="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer2/UpgradeCometStardustButton" to="InGameUiController/ShopController" method="_on_upgrade_comet_stardust_button_pressed"]

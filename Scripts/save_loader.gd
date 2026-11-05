@@ -1,15 +1,5 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func load():
 	var file = FileAccess.open("res://Assets/SaveData/save.json", FileAccess.READ);
 	if(file == null): return;
@@ -22,5 +12,12 @@ func load():
 	var starDustLevel = levels["stardust"]["level"];
 	var cometStarDustLevel = levels["comet"]["level"]
 	
-	for i in range(starDustLevel): ClassAutoload.accountData.upgrade_stardust_per_time();
-	for i in range(cometStarDustLevel): ClassAutoload.accountData.upgrade_comet_stardust_per_time();
+	var ignorePriceOfUpgrade: bool = true
+	var skipStartInitialLevel: int = 0;
+	
+	for i in range(starDustLevel):
+		if(i == skipStartInitialLevel): continue;
+		ClassAutoload.accountData.upgrade_stardust_per_time(ignorePriceOfUpgrade);
+	for i in range(cometStarDustLevel):
+		if(i == skipStartInitialLevel): continue;
+		ClassAutoload.accountData.upgrade_comet_stardust_per_time(ignorePriceOfUpgrade);
