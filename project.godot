@@ -13,7 +13,7 @@ config_version=5
 config/name="SpaceIdleGame"
 run/main_scene="uid://c5xgb5vexkbx5"
 config/features=PackedStringArray("4.7", "Mobile")
-run/max_fps=30
+run/max_fps=120
 config/icon="res://icon.svg"
 
 [autoload]

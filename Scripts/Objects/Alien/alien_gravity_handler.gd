@@ -4,6 +4,7 @@ extends Node
 @onready var jumpTimer: Timer = $"../DelayTillNextJump";
 @onready var delayMoveTimer: Timer = $"../DelayTillNextMove";
 @onready var moveTimeTimer: Timer = $"../MoveTime";
+@onready var mineTimer: Timer = $"../MineTimer";
 @onready var animationNode: AnimatedSprite2D = $"../AlienAnimation";
 @onready var alienMineAnimationNode: AnimatedSprite2D = $"../AlienMineAnimation";
 
@@ -13,6 +14,7 @@ var gravityStrength: int = 0;
 
 var onPlanet: bool = false;
 var canMove: bool = false;
+var canMine: bool = true;
 
 var moveDirection: int = -1;
 
@@ -39,6 +41,7 @@ func _process(delta: float) -> void:
 	if(!self.onPlanet): self.gravityStrength += 1;
 	if(!self.planetCore): self.find_planet_core(); 
 	if(!self.planetCore): return;
+	if(self.onPlanet && !self.canMove && self.canMine): self.mine();
 	
 	var directionToCore: Vector2 = (self.planetCore.global_position - self.alienBody.global_position).normalized();
 	
@@ -68,6 +71,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func jump() -> void:
 	self.gravityStrength = self.jumpHeigth * -1;
+
+func mine() -> void:
+	self.canMine = false;
+	self.mineTimer.start();
 
 func get_move_direction() -> Vector2:
 	if not self.planetCore:
@@ -118,3 +125,8 @@ func animation_handling() -> void:
 	
 	if(moveDirection == -1): self.animationNode.flip_h = false;
 	else: self.animationNode.flip_h = true;
+
+
+func _on_mine_timer_timeout() -> void:
+	ClassAutoload.accountData.increase_currency(ClassAutoload.accountData.alienPerClick);
+	self.canMine = true;

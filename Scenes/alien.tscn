@@ -163,8 +163,13 @@ one_shot = true
 [node name="AlienRotationHandler" type="Node" parent="." unique_id=519878717]
 script = ExtResource("3_26noy")
 
+[node name="MineTimer" type="Timer" parent="." unique_id=911135177]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="AlienMovementHandler" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="AlienMovementHandler" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="DelayTillNextJump" to="AlienMovementHandler" method="_on_delay_till_next_jump_timeout"]
 [connection signal="timeout" from="DelayTillNextMove" to="AlienMovementHandler" method="_on_delay_till_next_move_timeout"]
 [connection signal="timeout" from="MoveTime" to="AlienMovementHandler" method="_on_move_time_timeout"]
+[connection signal="timeout" from="MineTimer" to="AlienMovementHandler" method="_on_mine_timer_timeout"]
