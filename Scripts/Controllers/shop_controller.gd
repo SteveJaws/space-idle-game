@@ -10,13 +10,13 @@ func _ready() -> void:
 	self.updateUI();
 
 func _on_upgrade_comet_stardust_button_pressed() -> void:
-	var canUpdate: bool = self.accountData.upgrade_comet_stardust_per_time();
+	var canUpdate: bool = self.accountData.upgrade_comet_level();
 	if(canUpdate): self.updateUI();
 
 func _on_upgrade_stardust_button_pressed() -> void:
-	var canUpdate: bool = self.accountData.upgrade_stardust_per_time();
+	var canUpdate: bool = self.accountData.buy_alien();
 	if(canUpdate): self.updateUI();
 
 func updateUI() -> void:
-	self.stardustPriceLabel.text = str(snappedf(self.accountData.stardustUpgradePrice, 0.01));
-	self.cometStardustPriceLabel.text = str(snappedf(self.accountData.cometStardustUpgradePrice, 0.01));
+	self.stardustPriceLabel.text = str(snappedf(self.accountData.alienCurrentPrice, 0.01));
+	self.cometStardustPriceLabel.text = str(snappedf(self.accountData.cometCurrentPrice, 0.01));

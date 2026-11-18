@@ -136,7 +136,7 @@ layout_mode = 2
 
 [node name="UpgradeStardustButton" type="Button" parent="InGameUiController/Main/MainColumn/MiddleRow/VBoxContainer" unique_id=432023624]
 layout_mode = 2
-text = "Upgrade stardust"
+text = "Buy Alien"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="InGameUiController/Main/MainColumn/MiddleRow" unique_id=1155092466]
 layout_mode = 2

@@ -128,5 +128,5 @@ func animation_handling() -> void:
 
 
 func _on_mine_timer_timeout() -> void:
-	ClassAutoload.accountData.increase_currency(ClassAutoload.accountData.alienPerClick);
+	ClassAutoload.accountData.increase_currency(ClassAutoload.accountData.stardustPerAlienMine);
 	self.canMine = true;

@@ -29,7 +29,7 @@ func _on_life_time_timeout() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		if(self.mouseEntered):
-			accountData.increase_currency(self.accountData.cometStardustPerClick);
+			accountData.increase_currency(self.accountData.stardustPerComet);
 			self.queue_free();
 
 func draw_sprite_correctly() -> void:

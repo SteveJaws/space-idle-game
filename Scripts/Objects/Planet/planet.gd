@@ -10,6 +10,8 @@ var canScale: bool = true;
 @onready var scaleFrom: Vector2 = self.sprite.scale;
 @onready var scaleTo: Vector2 = self.sprite.scale * 0.97;
 
+@export var planetClickStardust: int = 1;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.inGameUiController = get_tree().root.find_child("InGameUiController", true, false);
@@ -25,7 +27,7 @@ func _input(event: InputEvent) -> void:
 		var localPost: Vector2 = self.sprite.to_local(mousePos);
 		
 		if(self.sprite.get_rect().has_point(localPost)):
-			accountData.increase_currency(accountData.stardustPerClick)
+			accountData.increase_currency(self.planetClickStardust)
 			if(self.canScale): self.scale_self();
 
 func scale_self() -> void:
