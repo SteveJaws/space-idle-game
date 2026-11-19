@@ -78,6 +78,7 @@ scale = Vector2(1.67, 1.67)
 
 [node name="Alien" parent="GameArea" unique_id=1097530145 instance=ExtResource("3_344ge")]
 position = Vector2(-257, -3)
+alienColor = Color(1, 0, 0.3137255, 1)
 
 [node name="InGameUiController" type="Control" parent="." unique_id=290881692 node_paths=PackedStringArray("currencyContainer")]
 layout_mode = 3
